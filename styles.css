@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+    border:2px solid black;
+}
+
+body{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#login{
+    grid-column:1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-items:center;
+    align-content:center;   
+}
+
+input{
+    height:1.5em;
+    width:20em;
+}
+
+button{
+    height:1.5em;
+    width:20em;
+}
+
+#comment_box{
+    grid-column:2;
+    background:green;
+    height:100%;
+    width:100%;
+}
