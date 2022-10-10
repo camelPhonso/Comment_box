@@ -4,14 +4,50 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles.css">
+        <title>Comment Box</title>
     </head>
     <body>
+        <main>
         <form id="login">
-            <input id='name_entry' class="input" type="text" placeholder="Name">
-            <input id="email_entry" class="input" type="email" placeholder="email">
-            <input id="comment_entry" class="input" type="text" placeholder="Enter your comment">
-            <button id="enter">Comment</button>
+            <label for="name_entry">User Name
+                <input id='name_entry' class="input" type="text" placeholder="Your Username" required>
+            </label>
+            <label for='email_entry'>Email
+                <input id="email_entry" class="input" type="email" placeholder="anything@email.com" required>
+            </label>
+            <label for="comment_entry">Comment
+                <input id="comment_entry" class="input" type="text" placeholder="Enter your comment" onkeydown="liveCount(this)" required>
+                <span id="counter">0/140</span>
+            </label>
+            
+            <button id="enter" type="button" onclick="fetch()">Comment</button>
         </form>
-        <div id="comment_box"></div>
+        <div id="forum"></div>
+        </main>
     </body>
+    <script>
+    //live counter on display & warning of maximum triggered by keydown event in #comment_entry
+        function liveCount(obj) {
+            document.getElementById('counter').innerHTML = `${obj.value.length}/140`;
+
+            if (obj.value.length >= 140){
+                document.getElementById('comment_entry').style.color = 'red';
+            }
+        };
+
+        //set forum as an empty array
+        const forum = [];
+
+        //fetch entered data and append to forum when submitted
+        function fetch(){
+            let comment = document.getElementById('comment_entry').value;
+            let name = document.getElementById('name_entry').value;
+            let email = document.getElementById('email_entry').value;
+            forum.push('<p class="user_name">' + name + '</p><p class="user_comment">' + comment + '</p>');
+            document.getElementById('forum').innerHTML = forum;
+
+            let inputs = document.querySelectorAll('input');
+            inputs.forEach(input => input.value = '');
+        };
+    </script>
 </html>

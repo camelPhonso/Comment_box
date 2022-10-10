@@ -1,34 +1,89 @@
+/*page setup*/
 *{
     box-sizing: border-box;
-    border:2px solid black;
+    !--border:2px solid black;
 }
 
-body{
+html{
+    background-color:var(--base);
+}
+:root{
+    --base:#d7eaf3;
+    --highlights:#77b5d9;
+    --darks:#14397d;
+}
+
+html{
+    font-size: medium;
+    font-family:sans-serif;
+
+}
+
+/*estabilishing the grid layout to set all elements*/
+main{
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    height:50vh;
 }
 
+/*styling the form*/
 #login{
-    grid-column:1;
+    grid-column:2;
+    margin:auto;
     display: flex;
     flex-flow: column nowrap;
-    justify-items:center;
-    align-content:center;   
+    gap:1rem;
+    justify-content:center;
+    align-items:center;  
+}
+
+/*user details and comment input fields*/
+label{
+    width:100%;
 }
 
 input{
-    height:1.5em;
-    width:20em;
+    height:1.5rem;
+    width:100%;
+    border:none;
+    background-color:var(--highlights);
+}
+
+#comment_entry{
+    height:5rem;
 }
 
 button{
-    height:1.5em;
-    width:20em;
+    height:1.5rem;
+    width:13rem;
 }
 
-#comment_box{
-    grid-column:2;
-    background:green;
+/*previous comments display*/
+#forum{
+    grid-column:3;
     height:100%;
     width:100%;
+    background-color:var(--highlights);
+    overflow: auto;
+}
+
+.user_name, .user_comment{
+    font-family:monospace;
+    margin-left:0.8em;
+    padding:0.2em;
+}
+
+.user_name:first-of-type{
+    margin-top:1.2em;
+}
+
+.user_name{
+    color:var(--base);
+    margin-top:-2em;
+}
+
+.user_comment{
+    color:var(--darks);
+    margin-left:1.2em;
+    margin-top:-1.5em;
 }
