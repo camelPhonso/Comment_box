@@ -36,16 +36,25 @@
         };
 
         //set forum as an empty array
-        const forum = [];
-
+        const mail_list = [];
+        let forum = document.getElementById('forum');
         //fetch entered data and append to forum when submitted
         function fetch(){
-            let comment = document.getElementById('comment_entry').value;
-            let name = document.getElementById('name_entry').value;
-            let email = document.getElementById('email_entry').value;
-            forum.push('<p class="user_name">' + name + '</p><p class="user_comment">' + comment + '</p>');
-            document.getElementById('forum').innerHTML = forum;
-
+            let np = document.createElement('p');
+            np.classList.add('user_name');
+            let nc = document.createTextNode(`${document.getElementById('name_entry').value}:`);
+            let cp = document.createElement('p');
+            cp.classList.add('user_comment');
+            let cc = document.createTextNode(document.getElementById('comment_entry').value);
+            forum.appendChild(np);
+            np.appendChild(nc);
+            forum.appendChild(cp);
+            cp.appendChild(cc);
+            
+            //create a mailing list
+            let address = document.getElementById('email_entry').value;
+            mail_list.push(address);
+            //clear input fields with each submit
             let inputs = document.querySelectorAll('input');
             inputs.forEach(input => input.value = '');
         };

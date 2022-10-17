@@ -73,17 +73,12 @@ button{
     padding:0.2em;
 }
 
-.user_name:first-of-type{
-    margin-top:1.2em;
-}
-
 .user_name{
     color:var(--base);
-    margin-top:-2em;
 }
 
 .user_comment{
     color:var(--darks);
     margin-left:1.2em;
-    margin-top:-1.5em;
+    margin-top:-1em;
 }
