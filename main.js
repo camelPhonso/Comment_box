@@ -8,6 +8,7 @@ let userName;
 
 //call for login() at the start
 log_button.addEventListener('click', login);
+comment.disabled = true;
 comment_button.disabled = true;
 
 //live counter on display & warning of maximum triggered by keydown event in #comment_entry
@@ -15,7 +16,7 @@ function liveCount(obj) {
     document.getElementById('counter').innerHTML = `${obj.value.length}/140`;
 
     if (obj.value.length >= 140){
-        document.getElementById('comment_entry').style.color = 'red';
+        comment.style.color = 'red';
     }
 };
 
