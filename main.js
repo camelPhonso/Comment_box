@@ -47,17 +47,18 @@ function login(){
         log_button.removeEventListener('click',login);
         log_button.addEventListener('click',logout);
 
-        //add eventlistener to allow for a comment to be submitted by pressing 'Enter'
-        comment.addEventListener('keydown', (e) => {if(e.keyCode === 13){fetch()}});
+
+        console.log(userName);
     };
 
     //create a mailing list
-    let address = document.getElementById('email_entry').value;
-    if(address != ''){
-        mailingList[userName] = {
-            'email address': address
-        };
-    };
+    // let address = document.getElementById('email_entry').value;
+    // if(address != ''){
+    //     mailingList[userName] = {
+    //         'email address': address
+    //     };
+    // };
+    // console.log(mailingList);
 };
 
 function logout(){
@@ -99,3 +100,6 @@ function fetch(){
     //clear comment_entry with each submit
    comment.value = '';
 };
+
+//add eventlistener to allow for a comment to be submitted by pressing 'Enter'
+comment.addEventListener('keydown', (e) => {if(e.keyCode === 13){fetch()}});
