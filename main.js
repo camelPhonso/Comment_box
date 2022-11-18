@@ -1,9 +1,10 @@
 //global variables
-const mail_list = [];
+const mailingList = {};
 let forum = document.getElementById('forum');
 let comment = document.getElementById('comment_entry');
 let log_button = document.getElementById('log_button');
 let comment_button = document.getElementById('enter');
+let detail_fields = document.getElementsByClassName('user_details');
 let userName;
 
 //call for login() at the start
@@ -33,15 +34,21 @@ function login(){
         //restyle fields and disable editing of userName
         log_button.innerText = 'Log Out';
         comment.disabled = false;
-        comment.placeholder = 'Enter your comment'
+        comment.style.backgroundColor = 'var(--highlights)';
+        comment.placeholder = 'Enter your comment';
         comment_button.disabled = false;
 
-        document.getElementById('name_entry').disabled = true;
-        document.getElementById('email_entry').disabled = true;
+        for (i of detail_fields){
+            i.disabled = true;
+            i.style.backgroundColor = 'grey';
+        };
     
         //replace eventListener to trigger logout()
         log_button.removeEventListener('click',login);
         log_button.addEventListener('click',logout);
+
+        //add eventlistener to allow for a comment to be submitted by pressing 'Enter'
+        comment.addEventListener('keydown', (e) => {if(e.keyCode === 13){fetch()}});
     };
 };
 
@@ -54,15 +61,17 @@ function logout(){
 
     //reset comment_button and comment box
     comment_button.disabled = true;
-    comment.placeholder = 'Log in to submit your comment'
+    comment.style.backgroundColor = 'grey';
 
     //replace eventListener to trigger login()
     log_button.removeEventListener('click',logout);
     log_button.addEventListener('click',login);
 
     //enable userName editing
-    document.getElementById('name_entry').disabled = false;
-    document.getElementById('email_entry').disabled = false;
+    for (i of detail_fields){
+        i.disabled = true;
+        i.style.backgroundColor = 'var(--highlights';
+    };
 }
 
 
@@ -80,8 +89,14 @@ function fetch(){
     cp.appendChild(cc);
     
     //create a mailing list
-    let address = document.getElementById('email_entry').value;
-    mail_list.push(address);
+    // let address = document.getElementById('email_entry').value;
+    // if(address != ''){
+    //     mailingList[userName] = {
+    //         'email address': address;
+    //     };
+    // };
+    
+    
     //clear comment_entry with each submit
    comment.value = '';
 };

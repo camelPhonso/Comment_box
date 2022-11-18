@@ -12,14 +12,14 @@
             <div id="forum"></div>
             <form id="login">
                 <label for="name_entry">User Name
-                    <input id='name_entry' class="input" type="text" placeholder="Your Username" required>
+                    <input id='name_entry' class="user_details input" type="text" placeholder="Your Username">
                 </label>
                 <label for='email_entry'>Email
-                    <input id="email_entry" class="input" type="email" placeholder="anything@email.com" required>
+                    <input id="email_entry" class="user_details input" type="email" placeholder="anything@email.com">
                 </label>
                 <button id="log_button" type="button" onclick="login()">Log In</button>
                 <label for="comment_entry">Comment
-                    <input id="comment_entry" class="input" type="text" onkeyup="liveCount(this)" placeholder="Log in to submit a comment">
+                    <input id="comment_entry" type="text" class="input" onkeyup="liveCount(this)">
                     <span id="counter">0/140</span>
                 </label>
             
