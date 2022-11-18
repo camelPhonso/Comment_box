@@ -50,6 +50,14 @@ function login(){
         //add eventlistener to allow for a comment to be submitted by pressing 'Enter'
         comment.addEventListener('keydown', (e) => {if(e.keyCode === 13){fetch()}});
     };
+
+    //create a mailing list
+    let address = document.getElementById('email_entry').value;
+    if(address != ''){
+        mailingList[userName] = {
+            'email address': address
+        };
+    };
 };
 
 function logout(){
@@ -58,10 +66,10 @@ function logout(){
     inputs.forEach(input => input.value = '');
     log_button.innerText = 'Log In';
     comment.disabled = true;
+    comment.style.backgroundColor = 'grey';
 
     //reset comment_button and comment box
     comment_button.disabled = true;
-    comment.style.backgroundColor = 'grey';
 
     //replace eventListener to trigger login()
     log_button.removeEventListener('click',logout);
@@ -69,7 +77,7 @@ function logout(){
 
     //enable userName editing
     for (i of detail_fields){
-        i.disabled = true;
+        i.disabled = false;
         i.style.backgroundColor = 'var(--highlights';
     };
 }
@@ -87,15 +95,6 @@ function fetch(){
     np.appendChild(nc);
     forum.appendChild(cp);
     cp.appendChild(cc);
-    
-    //create a mailing list
-    // let address = document.getElementById('email_entry').value;
-    // if(address != ''){
-    //     mailingList[userName] = {
-    //         'email address': address;
-    //     };
-    // };
-    
     
     //clear comment_entry with each submit
    comment.value = '';
